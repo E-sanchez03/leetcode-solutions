@@ -75,7 +75,7 @@ Anota aquí tus métricas para tener una referencia de tu rendimiento.
 
 
 ---
-## 7. Notas y Puntos Clave Aprendidos
+## 6. Notas y Puntos Clave Aprendidos
 
 En este problema podemos entender como el acceso a diccionarios lleva menos tiempo que recorrer una lista. La fuerza bruta no sería la solución óptima si podemos fabricar nuestra propia tabla Hash.
 
