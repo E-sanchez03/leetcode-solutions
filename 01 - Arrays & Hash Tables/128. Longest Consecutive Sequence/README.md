@@ -33,7 +33,7 @@ Example 3:
 
 ## 2. Análisis del Problema y Razonamiento
 
-Implemento el algoritmo de divide y vencerás para resolver el problema. Comprueba si existe para cierto n el número anterior n-1. Cada vez que existe un elemento más se suma uno a la cuenta. Luego se escoge la cuenta más grande
+Usaremos una comprobación directa de si existe un número posterior a él para evitar cálculos repetidos. Cuando tengamos un número que no tiene siguiente inmediato comprobaremos cuantos inferiores tiene. La cuenta más grande será el resultado
 
 ---
 
@@ -42,22 +42,18 @@ Implemento el algoritmo de divide y vencerás para resolver el problema. Comprue
 ```python
 class Solution:
     def longestConsecutive(self, nums: List[int]) -> int:
-        if not nums:
-            return 0
         nums = set(nums)
-        counts = []
-        def check(n):
-            suma = 1
-            if n in nums:
-                suma += check(n-1)
-            return suma
+        counts = 0
         for n in nums:
             if n+1 in nums:
                 continue
-            count = check(n-1)
-            counts.append(count)
-        
-        return max(counts)
+            count =1
+            c = n-1
+            while c in nums:
+                count+=1
+                c-=1
+            counts = max(counts,count)
+        return counts
 ```
 
 ---
@@ -73,7 +69,7 @@ class Solution:
 
 ## 5. Resultados en LeetCode
 
-- **Runtime:** `64 ms` (supera al `29.11%` de los envíos)
-- **Memory:** `65.35 MB` (supera al `5.00%` de los envíos)
+- **Runtime:** `43 ms` (supera al `90.22%` de los envíos)
+- **Memory:** `34.08 MB` (supera al `71.89%` de los envíos)
 
 ---
